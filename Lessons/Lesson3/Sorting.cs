@@ -23,22 +23,55 @@ public static class Sorting
         int max;
         for (int k = 0; k < arr.Length; k++)
         {
+            // find index min 
             max = 0;
             for (int i = 1; i < arr.Length - k; i++)
             {
                 if (arr[i] > arr[max])
                     max = i;
             }
-            
+
+            // swap
             int temp = arr[arr.Length - k - 1];
             arr[arr.Length - k - 1] = arr[max];
             arr[max] = temp;
         }
     }
 
-    public static void InsertSort(ref int[] arr)
-    {
+    private static void MergeSort(ref int[] arr, ref int[] buf, int l, int r) {
+        if (l >= r)
+            return;
+
         
+        int m = (l + r) / 2;
+        MergeSort(ref arr, ref buf, l, m);
+        MergeSort(ref arr, ref buf, m + 1, r);
+
+        // Merge
+        int k = l;
+        for (int i = l, j = m + 1; i <= m || j <= r; ) {
+            if (j > r || (i <= m && arr[i] < arr[j])) {
+                buf[k] = arr[i];
+                ++i;
+            }
+            else {
+                buf[k] = arr[j];
+                ++j;
+            }
+            ++k;
+        }
+        for (int i = l; i <= r; ++i) {
+            arr[i] = buf[i];
+        }
+        
+    }
+
+    public static void MergeSort(ref int[] arr) {
+        if (arr.Length == 0)
+            return;
+
+        int[] buf = new int[arr.Length];
+        MergeSort(ref arr, ref buf, 0, arr.Length - 1);
     }
 
 }
