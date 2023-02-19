@@ -44,7 +44,7 @@ public class UnitArrayTest
         Assert.AreEqual(arr[2], 3);
 
         arr.Insert(6);
-        Assert.AreEqual(arr[4], 6);
+        Assert.AreEqual(arr[5], 6);
         
         Assert.ThrowsException<IndexOutOfRangeException>(() => arr.Insert(10, 9));
         Assert.ThrowsException<IndexOutOfRangeException>(() => arr.Insert(10, -2));
