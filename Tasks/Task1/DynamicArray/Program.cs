@@ -97,9 +97,9 @@ namespace DynamicArray
             string[] resultsBinarySearch = TestBinarySearchAlgo();
             string[] resultsSort = TestSortAlgo();
 
-            string buf = "n;LinearSearch;BinarySearch;Sort\n";
+            string buf = "n,LinearSearch,BinarySearch,Sort\n";
             for (int i = 0; i < n.Length; ++i) {
-                buf += $"{n[i]};{resultsLinear[i]};{resultsBinarySearch[i]};{resultsSort[i]}\n";
+                buf += $"{n[i]},{resultsLinear[i]},{resultsBinarySearch[i]},{resultsSort[i]}\n";
             }
 
             File.WriteAllText("../AlgoTimeResults.csv", buf);
