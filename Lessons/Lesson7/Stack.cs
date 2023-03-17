@@ -15,6 +15,21 @@ namespace Lesson7
             }
         }
 
+        // bool? test -> true, false, null
+        // Console.WriteLine(test ?? false);
+        // bool? is Nullable<bool>
+        // test.HasValue() -> if not null true, else false
+        // int? a = 42;
+        // if (a is int valueOfA)
+        // {
+        //     Console.WriteLine($"a is {valueOfA}");
+        // }
+        // else
+        // {
+        //     Console.WriteLine("a does not have a value");
+        // }
+        // Output:
+        // a is 42
         private Node? top;
         private int size;
 
@@ -40,6 +55,7 @@ namespace Lesson7
 
         public int Top()
         {
+            // return top.value;
             if (top is Node node)
             {
                 return node.value;
