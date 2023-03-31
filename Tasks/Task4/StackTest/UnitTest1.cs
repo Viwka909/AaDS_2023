@@ -45,13 +45,13 @@ public class UnitTest1
     public void TestIsReadyForGame()
     {
         CardStack stack = new();
-        for (int i = 0; i < 9; ++i)
+        for (int i = 0; i < 29; ++i)
         {
             stack.Push(new Card((CardElement)1, (CardType)1, $"Some{i}", 3));
             Assert.AreEqual(false, stack.IsReadyForGame());
         }
 
-        stack.Push(new Card((CardElement)1, (CardType)1, "Some9", 3));
+        stack.Push(new Card((CardElement)1, (CardType)1, "Some29", 3));
         Assert.AreEqual(true, stack.IsReadyForGame());
     }
 
