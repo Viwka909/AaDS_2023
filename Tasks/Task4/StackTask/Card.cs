@@ -51,11 +51,12 @@ public class Card
     {
         get { return prior; }
     }
-}
-public override string ToString()
-{
-    string result = $"\t\n{elem}\n\t{type}\n{text}\n";
-    return result;
+    public override string ToString()
+    {
+        string result = $"\t\n{elem}\n\t{type}\n{text}\n";
+        return result;
+    }
+
 }
 
 
