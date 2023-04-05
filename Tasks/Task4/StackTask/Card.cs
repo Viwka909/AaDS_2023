@@ -21,10 +21,11 @@ public enum CardType
 public class Card
 {
 
+    private CardElement elem;
     private CardType type;
     private string text = text;
     private int prior = prior;
-    public CardElement Element;
+
 
     public Card(CardElement elem, CardType type, string text, int prior)
     {
