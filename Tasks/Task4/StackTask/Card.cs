@@ -21,7 +21,6 @@ public enum CardType
 public class Card
 {
 
-    private CardElement elem;
     private CardType type;
     private string text = text;
     private int prior = prior;
