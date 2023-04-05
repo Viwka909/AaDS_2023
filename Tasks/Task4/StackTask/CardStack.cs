@@ -31,7 +31,7 @@ public class CardStack
         }
         else if (size == 100)
         {
-            throw new System.Exception("Deck overfilled")
+            throw new System.Exception("Deck overfilled");
         }
         else
         {
