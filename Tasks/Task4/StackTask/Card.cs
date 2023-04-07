@@ -20,6 +20,7 @@ public enum CardType
 
 public class Card
 {
+
     private CardElement elem;
     private CardType type;
     private string text = text;
@@ -40,7 +41,7 @@ public class Card
     {
         get { return prior;}
     }
-    public Card(CardElement elem, CardType type, string text, int prior)
+    public Card(CardCardElement elem, CardType type, string text, int prior)
     {
         this.text = text;
         this.prior = prior;
