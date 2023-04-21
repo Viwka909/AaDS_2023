@@ -1,4 +1,4 @@
-name: dotnet package
+name: Task4 tests
 
 on: 
   pull_request:
