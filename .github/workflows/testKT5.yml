@@ -5,7 +5,7 @@ on:
     branches:
       - 'master'
     paths:
-      - ./PokemonGame/**.cs
+      - ./PokemonGame/**
 
 jobs:
   build:
