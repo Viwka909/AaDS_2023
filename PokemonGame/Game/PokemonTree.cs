@@ -25,7 +25,7 @@ public class PokemonTree
 
     public void Add(Pokemon pokemon)
     {
-        testednode = new Node(null, null, pokemon);
+        Node testednode = new Node(null, null, pokemon);
         if (root is null)
         {
             root = testednode;
@@ -42,7 +42,7 @@ public class PokemonTree
             }
             else
             {
-                subjectnode = root.Right;
+                Node subjectnode = root.Right;
                 NodeAdd(subjectnode, testednode);
             }
         }
@@ -56,7 +56,7 @@ public class PokemonTree
             }
             else
             {
-                subjectnode = root.Left;
+                Node subjectnode = root.Left;
                 NodeAdd(subjectnode, testednode);
             }
         }
@@ -88,7 +88,7 @@ public class PokemonTree
     }
     public Pokemon Search(string Name)
     {
-        retrun(SearchNode(root, Name));
+        return(SearchNode(root, Name));
     }
     public Pokemon SearchNode(Node main, string Name)
     {
@@ -103,11 +103,11 @@ public class PokemonTree
         }
         else if (compval > 0)
         {
-            SearchNode(main.Right, Name);
+            return SearchNode(main.Right, Name);
         }
         else
         {
-            SearchNode(main.Left, Name);
+            return SearchNode(main.Left, Name);
         }
     }
     public Pokemon Delete(string Name)
@@ -115,12 +115,13 @@ public class PokemonTree
         Node _deletable = SearchDelete(root, Name);
         if(_deletable.Parent is null){
             if(_deletable.Right.size < _deletable.Left.size){
-                DeleteFunc(_deletable,_deletable.Right);
-                return(_deletable);
+                Node searchable = _deletable.Left;
+                
+                return(_deletable.pokemon);
             }
         }
         int compval = _deletable.pokemon.Name.CompareTo(_deletable.Parent.pokemon.Name);
-        if(compval is ){
+        if(compval == 0){
 
         }
     }
@@ -138,17 +139,13 @@ public class PokemonTree
         }
         else if (compval > 0)
         {
-            SearchNode(main.Right, Name);
+           return SearchDelete(main.Right, Name);
         }
         else
         {
-            SearchNode(main.Left, Name);
+            return SearchDelete(main.Left, Name);
         }
     }
-    public void DeleteFunc(Node _deletable,Node _deletableside){
-
-    }
-    
 }
 
 
