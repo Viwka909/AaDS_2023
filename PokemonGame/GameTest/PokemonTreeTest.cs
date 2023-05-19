@@ -101,7 +101,7 @@ public class PokemonTreeTest
         {
             tree.Add(ToStrCollection[i]);
         }
-         Assert.AreEqual("Kakuna Rattata Igglybuff Zapdos Oddish Jumpluff dMeowth ", tree.ToString());
+         Assert.AreEqual("Kakuna Rattata Igglybuff Zapdos Oddish Jumpluff Meowth ", tree.ToString());
 
     }
 }
