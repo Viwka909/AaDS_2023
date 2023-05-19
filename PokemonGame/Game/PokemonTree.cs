@@ -19,7 +19,8 @@ public class PokemonTree
 
     }
     Node? root;
-    public int Size{
+    public int Size
+    {
         get => root.size;
     }
 
@@ -38,7 +39,7 @@ public class PokemonTree
             if (root.Right is null)
             {
                 root.Right = testednode;
-                
+
             }
             else
             {
@@ -88,7 +89,7 @@ public class PokemonTree
     }
     public Pokemon Search(string Name)
     {
-        return(SearchNode(root, Name));
+        return (SearchNode(root, Name));
     }
     public Pokemon SearchNode(Node main, string Name)
     {
@@ -113,16 +114,59 @@ public class PokemonTree
     public Pokemon Delete(string Name)
     {
         Node _deletable = SearchDelete(root, Name);
-        if(_deletable.Parent is null){
-            if(_deletable.Right.size < _deletable.Left.size){
-                Node searchable = _deletable.Left;
-                
-                return(_deletable.pokemon);
+        Node searchable = null;
+        if (_deletable.Left == null)
+        {
+            searchable = _deletable.Right;
+            while (searchable.Right != null)
+            {
+                searchable = searchable.Right;
             }
+            searchable.Parent.Right = null;
+        }
+        else if (_deletable.Right == null)
+        {
+            searchable = _deletable.Left;
+            while (searchable.Left != null)
+            {
+                searchable = searchable.Left;
+            }
+            searchable.Parent.Left = null;
+        }
+        else if (_deletable.Right.size < _deletable.Left.size)
+        {
+            searchable = _deletable.Left;
+            while (searchable.Left != null)
+            {
+                searchable = searchable.Left;
+            }
+            searchable.Parent.Left = null;
+        }
+        else
+        {
+            searchable = _deletable.Right;
+            while (searchable.Right != null)
+            {
+                searchable = searchable.Right;
+            }
+            searchable.Parent.Right = null;
+        }
+        if (_deletable.Parent == null)
+        {
+            Node buff = _deletable;
+            _deletable = searchable;
+            return (buff.pokemon);
         }
         int compval = _deletable.pokemon.Name.CompareTo(_deletable.Parent.pokemon.Name);
-        if(compval == 0){
-
+        if (compval > 0)
+        {
+            _deletable.Parent.Left = searchable;
+            return (_deletable.pokemon);
+        }
+        else
+        {
+            _deletable.Parent.Right = searchable;
+            return (_deletable.pokemon);
         }
     }
     public Node SearchDelete(Node main, string Name)
@@ -139,12 +183,24 @@ public class PokemonTree
         }
         else if (compval > 0)
         {
-           return SearchDelete(main.Right, Name);
+            return SearchDelete(main.Right, Name);
         }
         else
         {
             return SearchDelete(main.Left, Name);
         }
+    }
+    public override string ToString()
+    {
+        Pokemon[] buf = new Pokemon[root.size];
+        buf[0] = root.pokemon;
+        Node bufLeft;
+        Node bufRight;
+        for (int i = 1; i < root.size; ++i)
+        {
+            buf[i] = 
+        }
+        return base.ToString();
     }
 }
 
