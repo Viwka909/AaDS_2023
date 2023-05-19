@@ -192,15 +192,54 @@ public class PokemonTree
     }
     public override string ToString()
     {
-        Pokemon[] buf = new Pokemon[root.size];
+        Pokemon[] buf = new Pokemon[root.size * 2];
+        Pokemon[] truebuf = new Pokemon[root.size];
         buf[0] = root.pokemon;
-        Node bufLeft;
-        Node bufRight;
-        for (int i = 1; i < root.size; ++i)
+        buf[1] = root.Left.pokemon;
+        buf[2] = root.Right.pokemon;
+        Node bufLeft = root.Left;
+        Node bufRight = root.Right;
+        SearchWidth(bufLeft, 2, buf);
+        SearchWidth(bufRight, 3, buf);
+        string textbuf = "";
+        int count = 0;
+        for (int i = 0; i < buf.Length; i++)
         {
-            buf[i] = 
+            if (buf[i] != null)
+            {
+                truebuf[count] = buf[i];
+                ++count;
+            }
         }
-        return base.ToString();
+        foreach (var item in truebuf)
+        {
+            textbuf += $"{item.Name} ";
+        }
+        return textbuf;
+    }
+    public void SearchWidth(Node check, int index, Pokemon[] buf)
+    {
+        if (check.Left != null && check.Right == null)
+        {
+            buf[index * 2] = check.Left.pokemon;
+            SearchWidth(check.Left, index * 2, buf);
+        }
+        else if (check.Left == null && check.Right != null)
+        {
+            buf[index * 2 + 1] = check.Right.pokemon;
+            SearchWidth(check.Right, index * 2 + 1, buf);
+        }
+        else if(check.Left == null && check.Right == null){
+            return;
+        }
+        else{
+            buf[index * 2] = check.Left.pokemon;
+            SearchWidth(check.Left, index * 2, buf);
+            buf[index * 2 + 1] = check.Right.pokemon;
+            SearchWidth(check.Right, index * 2 + 1, buf);
+        }
+        return;
+
     }
 }
 
